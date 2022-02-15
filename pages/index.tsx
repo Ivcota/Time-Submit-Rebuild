@@ -9,15 +9,15 @@ const Home: NextPage = () => {
     <div className="">
       <FadeInMotion>
         <div className="text-center text-white mt-[28vh] flex flex-col justify-center items-center">
-          <h1 className="text-3xl font-light">Time Submit</h1>
-          <p className="font-light">Let’s get your time submitted</p>
-          <Link href="/">
+          <h1 className="mb-3 text-3xl font-light">Time Submit</h1>
+          <p className="mb-2 font-light">Let’s get your time submitted</p>
+          <Link href="/start">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ ease: "easeInOut", delay: 0.2 }}
             >
-              <a className="   md:block hidden  mt-3 bg-sea-900 text-white py-3 px-6 rounded hover:bg-sea-800 cursor-pointer transition-all hover:-translate-y-1">
+              <a className="hidden px-6 py-3 mt-3 text-white transition-all rounded cursor-pointer md:block w-52 bg-sea-900 hover:bg-sea-800 hover:-translate-y-1">
                 Start Now
               </a>
             </motion.div>
@@ -25,12 +25,12 @@ const Home: NextPage = () => {
         </div>
       </FadeInMotion>
 
-      <Link href="/">
+      <Link href="/start">
         <motion.a
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ease: "easeInOut", delay: 0.2 }}
-          className="fixed bottom-11 right-7 bg-sea-900 text-white py-3 px-6 rounded md:hidden hover:bg-sea-800 cursor-pointer"
+          className="fixed px-6 py-3 text-white rounded cursor-pointer bottom-11 right-7 bg-sea-900 md:hidden hover:bg-sea-800"
         >
           Start Now
         </motion.a>
