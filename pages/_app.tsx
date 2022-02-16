@@ -1,15 +1,20 @@
 import type { AppProps } from "next/app";
+import { useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import Navbar from "../components/Navbar";
 import { useDarkMode } from "../libs/Stores";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { isDark } = useDarkMode();
+  const { isDark, restoreIsDark } = useDarkMode();
+
+  useEffect(() => {
+    restoreIsDark();
+  }, []);
 
   return (
     <div className={`${isDark && "dark"}`}>
-      <div className="h-screen bg-sea-200 dark:bg-sea-700">
+      <div className="h-screen bg-sea-50 dark:bg-sea-700">
         <Navbar />
         <Component {...pageProps} />
       </div>

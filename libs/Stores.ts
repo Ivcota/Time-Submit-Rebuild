@@ -3,6 +3,7 @@ import create from "zustand";
 interface ITheme {
   isDark: boolean;
   isDarkSwitch: () => void;
+  restoreIsDark: () => void;
 }
 
 export const useDarkMode = create<ITheme>((set) => {
@@ -10,9 +11,30 @@ export const useDarkMode = create<ITheme>((set) => {
     isDark: true,
     isDarkSwitch: () => {
       set(({ isDark }) => {
+        localStorage.setItem(
+          "time-submit-theme",
+          JSON.stringify({
+            isDark: !isDark,
+          })
+        );
         return {
           isDark: !isDark,
         };
+      });
+    },
+    restoreIsDark: () => {
+      set(() => {
+        if (!localStorage.getItem("time-submit-theme")) {
+          return {
+            isDark: true,
+          };
+        } else {
+          return {
+            isDark: JSON.parse(
+              localStorage.getItem("time-submit-theme") as string
+            ).isDark,
+          };
+        }
       });
     },
   };
