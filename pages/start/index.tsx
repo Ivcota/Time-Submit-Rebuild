@@ -1,7 +1,7 @@
 import { collection } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import Select from "react-select";
 import FadeInMotion from "../../components/FadeInMotion";
 import FormHeader from "../../components/FormHeader";
@@ -12,19 +12,27 @@ import { useCollection } from "react-firebase-hooks/firestore";
 
 const StartFormPage = () => {
   const congregationsRef = collection(db, "congregations");
-  const [values, loading, error] = useCollection(congregationsRef);
+  const [data, loading, error] = useCollection(congregationsRef);
 
-  const options = [{ value: "casa-grande-west", label: "Casa Grande West" }];
+  const fluidOptionsArray = useMemo(() => {
+    return data?.docs.map((congregation) => {
+      return {
+        value: congregation.id,
+        label: congregation.data().name,
+      };
+    });
+  }, [data]);
+
   const router = useRouter();
 
-  useEffect(() => console.log(values?.docs), [values]);
+  useEffect(() => console.log(data?.docs), [data]);
 
   return (
     <FadeInMotion>
       <MidCenterPlacement>
         <FormHeader>Congregation</FormHeader>
         <div className="mb-4 text-black w-52 md:w-64">
-          <Select options={options} />
+          <Select options={fluidOptionsArray} />
         </div>
 
         <motion.div
