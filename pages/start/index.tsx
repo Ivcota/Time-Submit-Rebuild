@@ -9,8 +9,27 @@ import MidCenterPlacement from "../../components/MidCenterPlacement";
 import PrimaryButton from "../../components/PrimaryButton";
 import { db } from "../../libs/Firebase";
 import { useCollection } from "react-firebase-hooks/firestore";
+import { useFormik } from "formik";
+import { useTimeFormStore } from "../../libs/Stores";
+import { toast } from "react-hot-toast";
 
 const StartFormPage = () => {
+  const { setCongregation } = useTimeFormStore();
+
+  const formik = useFormik({
+    initialValues: {
+      congregation: "",
+    },
+    onSubmit: ({ congregation }) => {
+      if (congregation !== "") {
+        setCongregation(congregation);
+        router.push("/start/field-service-group");
+      } else {
+        toast.error("Please select a congregation");
+      }
+    },
+  });
+
   const congregationsRef = collection(db, "congregations");
   const [data, loading, error] = useCollection(congregationsRef);
 
@@ -29,24 +48,30 @@ const StartFormPage = () => {
 
   return (
     <FadeInMotion>
-      <MidCenterPlacement>
-        <FormHeader>Congregation</FormHeader>
-        <div className="mb-4 text-black w-52 md:w-64">
-          <Select options={fluidOptionsArray} />
-        </div>
+      <form onSubmit={formik.handleSubmit}>
+        <MidCenterPlacement>
+          <FormHeader>Congregation</FormHeader>
+          <div className="mb-4 text-black w-52 md:w-64">
+            <Select
+              name="congregation"
+              onChange={(e) => {
+                formik.setValues({
+                  congregation: e?.value as string,
+                });
+              }}
+              options={fluidOptionsArray}
+            />
+          </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ease: "easeInOut", delay: 0.2 }}
-        >
-          <PrimaryButton
-            onClick={() => router.push("/start/field-service-group")}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeInOut", delay: 0.2 }}
           >
-            Next
-          </PrimaryButton>
-        </motion.div>
-      </MidCenterPlacement>
+            <PrimaryButton>Next</PrimaryButton>
+          </motion.div>
+        </MidCenterPlacement>
+      </form>
     </FadeInMotion>
   );
 };
