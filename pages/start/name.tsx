@@ -16,7 +16,7 @@ const NamePage: NextPage = () => {
       <FadeInMotion>
         <HighCenterPlacement>
           <FormHeader>Enter Your Name</FormHeader>
-          <div className="flex flex-col gap-2 ">
+          <div className="flex flex-col gap-2 md:w-64 ">
             <PrimaryInput placeholder="First Name" type="text" />
             <PrimaryInput placeholder="Last Name" type="text" />
           </div>

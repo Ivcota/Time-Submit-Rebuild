@@ -16,7 +16,7 @@ const StartFormPage = () => {
     <FadeInMotion>
       <MidCenterPlacement>
         <FormHeader>Congregation</FormHeader>
-        <div className="mb-4 text-black w-52">
+        <div className="mb-4 text-black w-52 md:w-64">
           <Select options={options} />
         </div>
 

@@ -14,7 +14,7 @@ const LastStepPage: NextPage = () => {
       <FadeInMotion>
         <HighCenterPlacement>
           <FormHeader> Almost Done...</FormHeader>
-          <div className="flex flex-col gap-2 mt-1 mb-4">
+          <div className="flex flex-col gap-2 mt-1 mb-4 md:w-64">
             <PrimaryInput placeholder="Hours" />
             <PrimaryInput placeholder="Placements" />
             <PrimaryInput placeholder="Videos" />
