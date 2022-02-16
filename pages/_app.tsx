@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <div className="dark">
-      <div className="bg-sea-700 h-screen">
+      <div className="h-screen bg-sea-200 dark:bg-sea-700">
         <Navbar />
         <Component {...pageProps} />
       </div>

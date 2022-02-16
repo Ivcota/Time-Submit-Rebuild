@@ -10,7 +10,6 @@ import { useRouter } from "next/router";
 
 const StartFormPage = () => {
   const options = [{ value: "casa-grande-west", label: "Casa Grande West" }];
-
   const router = useRouter();
 
   return (

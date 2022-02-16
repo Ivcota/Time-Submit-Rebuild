@@ -1,14 +1,16 @@
-import React from "react";
 import { NextPage } from "next";
-import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRouter } from "next/router";
+import React from "react";
+import DelayedFadeIn from "../../components/DelayedFadeIn";
 import FadeInMotion from "../../components/FadeInMotion";
-import PrimaryInput from "../../components/PrimaryInput";
-import PrimaryButton from "../../components/PrimaryButton";
 import HighCenterPlacement from "../../components/HighCenterPlacement";
+import PrimaryButton from "../../components/PrimaryButton";
+import PrimaryInput from "../../components/PrimaryInput";
 import FormHeader from "./../../components/FormHeader";
 
 const NamePage: NextPage = () => {
+  const router = useRouter();
+
   return (
     <div>
       <FadeInMotion>
@@ -21,13 +23,11 @@ const NamePage: NextPage = () => {
         </HighCenterPlacement>
       </FadeInMotion>
       <div className="flex justify-center mt-3">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ ease: "easeInOut", delay: 0.2 }}
-        >
-          <PrimaryButton>Next</PrimaryButton>
-        </motion.div>
+        <DelayedFadeIn>
+          <PrimaryButton onClick={() => router.push("/start/last-step")}>
+            Next
+          </PrimaryButton>
+        </DelayedFadeIn>
       </div>
     </div>
   );

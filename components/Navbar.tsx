@@ -8,11 +8,11 @@ const Navbar = () => {
     <nav>
       {/* Menue Items */}
       {isOpen && (
-        <div className="bg-black opacity-80 fixed w-screen h-full z-10">
+        <div className="fixed z-10 w-screen h-full bg-black opacity-80">
           <div>
             <svg
               onClick={() => setIsOpen(false)}
-              className="fill-white absolute top-4 right-4 opacity-100"
+              className="absolute opacity-100 fill-white top-4 right-4"
               xmlns="http://www.w3.org/2000/svg"
               width="35"
               viewBox="0 0 24 24"
@@ -22,12 +22,12 @@ const Navbar = () => {
           </div>
           <div className="flex flex-col items-center justify-center h-full gap-4">
             <Link href="/">
-              <a className="underline text-2xl decoration-sea-300 text-white">
+              <a className="text-2xl text-white underline decoration-sea-300">
                 Home
               </a>
             </Link>
             <Link href="/">
-              <a className="underline text-2xl decoration-sea-300 text-white">
+              <a className="text-2xl text-white underline decoration-sea-300">
                 Login
               </a>
             </Link>
@@ -35,14 +35,16 @@ const Navbar = () => {
         </div>
       )}
 
-      <div className="flex py-4 px-3 justify-between">
+      <div className="flex justify-between px-3 py-4">
         <Link href="/">
-          <a className="text-white text-2xl font-light">Time Submit</a>
+          <a className="text-2xl dark:font-light dark:text-white">
+            Time Submit
+          </a>
         </Link>
         {!isOpen && (
           <svg
             onClick={() => setIsOpen(true)}
-            className="fill-white"
+            className=" dark:fill-white"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
             height="24"
