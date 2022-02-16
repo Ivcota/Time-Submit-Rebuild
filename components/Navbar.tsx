@@ -17,16 +17,20 @@ const Navbar = () => {
       <nav>
         {/* Menue Items */}
         <motion.div
+          initial={{ opacity: 0, y: "-10%", display: "none" }}
           animate={isOpen ? "open" : "closed"}
           variants={{
+            closed: {
+              opacity: 0,
+              y: "-10%",
+              transitionEnd: {
+                display: "none",
+              },
+            },
             open: {
               opacity: 1,
               y: 0,
-            },
-            closed: {
-              opacity: 0,
-              y: "-30%",
-              height: 0,
+              display: "block",
             },
           }}
           transition={{
