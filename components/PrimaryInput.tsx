@@ -12,6 +12,7 @@ const PrimaryInput: FC<InputProps> = ({
     <input
       onChange={onChange}
       value={value}
+      autoComplete="off"
       className="px-3 py-2 transition-all duration-300 rounded shadow-xl outline-none focus:ring ring-blue-400"
       placeholder={placeholder}
       type={type}
