@@ -1,15 +1,23 @@
+import { collection } from "firebase/firestore";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import Select from "react-select";
 import FadeInMotion from "../../components/FadeInMotion";
 import FormHeader from "../../components/FormHeader";
 import MidCenterPlacement from "../../components/MidCenterPlacement";
 import PrimaryButton from "../../components/PrimaryButton";
+import { db } from "../../libs/Firebase";
+import { useCollection } from "react-firebase-hooks/firestore";
 
 const StartFormPage = () => {
+  const congregationsRef = collection(db, "congregations");
+  const [values, loading, error] = useCollection(congregationsRef);
+
   const options = [{ value: "casa-grande-west", label: "Casa Grande West" }];
   const router = useRouter();
+
+  useEffect(() => console.log(values?.docs), [values]);
 
   return (
     <FadeInMotion>
