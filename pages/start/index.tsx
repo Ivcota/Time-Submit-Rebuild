@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 import Select from "react-select";
 import FadeInMotion from "../../components/FadeInMotion";
 import FormHeader from "../../components/FormHeader";
 import MidCenterPlacement from "../../components/MidCenterPlacement";
 import PrimaryButton from "../../components/PrimaryButton";
-import { useRouter } from "next/router";
 
 const StartFormPage = () => {
   const options = [{ value: "casa-grande-west", label: "Casa Grande West" }];

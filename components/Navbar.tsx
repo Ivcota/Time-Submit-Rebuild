@@ -22,7 +22,7 @@ const Navbar = () => {
           variants={{
             closed: {
               opacity: 0,
-              y: "-65%",
+              y: "-15%",
               transitionEnd: {
                 display: "none",
               },

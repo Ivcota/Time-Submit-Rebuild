@@ -10,7 +10,9 @@ const Home: NextPage = () => {
     <div className="">
       <FadeInMotion>
         <div className="text-center dark:text-white mt-[28vh] flex flex-col justify-center items-center">
-          <h1 className="mb-3 text-3xl dark:font-light">Time Submit</h1>
+          <h1 className="mb-3 text-3xl font-bold dark:font-light">
+            Time Submit
+          </h1>
           <p className="mb-4 dark:font-light">Let’s get your time submitted</p>
           <div className="hidden md:block">
             <Link href="/start">
