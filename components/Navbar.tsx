@@ -55,9 +55,6 @@ const Navbar = () => {
             <NavLink switchIsOpen={switchIsOpen} href="/">
               Home
             </NavLink>
-            <NavLink switchIsOpen={switchIsOpen} href="/">
-              Login
-            </NavLink>
 
             <button
               onClick={isDarkSwitch}
