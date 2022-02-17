@@ -1,8 +1,8 @@
+import { motion } from "framer-motion";
 import { NextPage } from "next";
 import Link from "next/link";
 import React from "react";
 import FadeInMotion from "../components/FadeInMotion";
-import { motion } from "framer-motion";
 import PrimaryButton from "../components/PrimaryButton";
 
 const Home: NextPage = () => {

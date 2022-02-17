@@ -1,15 +1,15 @@
+import { useFormik } from "formik";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
+import { toast } from "react-hot-toast";
 import DelayedFadeIn from "../../components/DelayedFadeIn";
 import FadeInMotion from "../../components/FadeInMotion";
 import HighCenterPlacement from "../../components/HighCenterPlacement";
 import PrimaryButton from "../../components/PrimaryButton";
 import PrimaryInput from "../../components/PrimaryInput";
-import FormHeader from "./../../components/FormHeader";
-import { useFormik } from "formik";
 import { useTimeFormStore } from "../../libs/Stores";
-import { toast } from "react-hot-toast";
+import FormHeader from "./../../components/FormHeader";
 
 const NamePage: NextPage = () => {
   const router = useRouter();
@@ -23,6 +23,8 @@ const NamePage: NextPage = () => {
     onSubmit: ({ firstName, lastName }) => {
       if (congregation !== "") {
         if (firstName !== "" && lastName !== "") {
+          setFirstName(firstName);
+          setLastName(lastName);
           router.push("/start/month");
         } else {
           toast.error("Please enter your name.");
