@@ -1,7 +1,7 @@
 import { signOut } from "firebase/auth";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../libs/Firebase";
 import { useDarkMode, useNavState } from "../libs/Stores";
