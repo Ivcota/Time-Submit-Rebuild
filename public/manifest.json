@@ -1,7 +1,7 @@
 {
   "theme_color": "#242d43",
   "background_color": "#242d43",
-  "display": "browser",
+  "display": "fullscreen",
   "scope": "/",
   "start_url": "/",
   "name": "Time Submit",
