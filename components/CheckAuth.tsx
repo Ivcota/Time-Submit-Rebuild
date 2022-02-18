@@ -3,6 +3,7 @@ import React, { FC, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../libs/Firebase";
 import { toast } from "react-hot-toast";
+import { signOut } from "firebase/auth";
 
 const CheckAuth: FC = ({ children }) => {
   const router = useRouter();
@@ -12,8 +13,11 @@ const CheckAuth: FC = ({ children }) => {
   useEffect(() => {
     if (loading !== true) {
       if (!user) {
-        toast.error(`You're not authorized`);
+        toast.error(`You are signed out`);
         router.push("/login");
+      }
+      if (user?.email !== "ivcotad@gmail.com") {
+        signOut(auth);
       }
     }
   }, [user]);

@@ -1,5 +1,5 @@
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
-import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import BaseText from "../components/BaseText";
@@ -10,9 +10,15 @@ import PrimaryButton from "../components/PrimaryButton";
 import { auth } from "../libs/Firebase";
 
 const LoginPage = () => {
+  const router = useRouter();
+
   const [user, loading, error] = useAuthState(auth);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, [user]);
 
   return (
     <div>

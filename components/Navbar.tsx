@@ -1,12 +1,17 @@
+import { signOut } from "firebase/auth";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useState } from "react";
-import { useDarkMode } from "../libs/Stores";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../libs/Firebase";
+import { useDarkMode, useNavState } from "../libs/Stores";
 import NavLink from "./NavLink";
-import { AnimationProps, motion } from "framer-motion";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useNavState();
+
   const { isDarkSwitch } = useDarkMode();
+  const [user, loading, error] = useAuthState(auth);
 
   const switchIsOpen = () => {
     setIsOpen(!isOpen);
@@ -62,6 +67,21 @@ const Navbar = () => {
             >
               Switch Theme
             </button>
+            {user ? (
+              <button
+                onClick={() => {
+                  signOut(auth);
+                  setIsOpen(false);
+                }}
+                className="text-2xl font-bold text-black underline dark:text-white decoration-green-900 dark:decoration-sea-300"
+              >
+                Sign Out
+              </button>
+            ) : (
+              <NavLink switchIsOpen={switchIsOpen} href="/login">
+                Login
+              </NavLink>
+            )}
           </div>
         </motion.div>
 

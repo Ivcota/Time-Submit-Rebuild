@@ -1,5 +1,21 @@
 import create from "zustand";
 
+interface INav {
+  isOpen: boolean;
+  setIsOpen: (value: boolean) => void;
+}
+
+export const useNavState = create<INav>((set) => {
+  return {
+    isOpen: false,
+    setIsOpen: (value) => {
+      set({
+        isOpen: value,
+      });
+    },
+  };
+});
+
 interface ITheme {
   isDark: boolean;
   isDarkSwitch: () => void;

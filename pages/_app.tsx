@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div className={`${isDark && "dark"}`}>
-      <div className="h-screen bg-sea-50 dark:bg-sea-700">
+      <div className="min-h-screen bg-sea-50 dark:bg-sea-700">
         <Navbar />
         <Component {...pageProps} />
       </div>
