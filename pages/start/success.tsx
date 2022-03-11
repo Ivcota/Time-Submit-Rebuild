@@ -8,6 +8,7 @@ import MidCenterPlacement from "../../components/MidCenterPlacement";
 import { db } from "../../libs/Firebase";
 import { useTimeFormStore } from "../../libs/Stores";
 import { useRouter } from "next/router";
+import BaseText from "../../components/BaseText";
 
 const SuccessPage = () => {
   const {
@@ -73,8 +74,8 @@ const SuccessPage = () => {
       <FadeInMotion>
         <MidCenterPlacement>
           <FormHeader> Success </FormHeader>
-          <p>Thank you {firstName}! </p>
-          <p>Your time has been submitted</p>
+          <BaseText>Thank you {firstName}! </BaseText>
+          <BaseText>Your time has been submitted </BaseText>
         </MidCenterPlacement>
       </FadeInMotion>
     </div>
