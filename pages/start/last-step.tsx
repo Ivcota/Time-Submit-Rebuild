@@ -41,25 +41,12 @@ const LastStepPage: NextPage = () => {
     },
     onSubmit: ({ bibleStudies, hours, placements, returnVisits, videos }) => {
       if (firstName !== "") {
-        if (bibleStudies && hours && placements && returnVisits && videos) {
-          setBibleStudies(bibleStudies as number);
-          setPlacements(placements as number);
-          setHours(hours as number);
-          setReturnVisits(returnVisits as number);
-          setVideos(videos as number);
-          router.push("/start/success");
-        } else {
-          alert(
-            JSON.stringify({
-              bibleStudies,
-              hours,
-              placements,
-              returnVisits,
-              videos,
-            })
-          );
-          toast.error("Make sure to fill out every input.");
-        }
+        setBibleStudies(bibleStudies as number);
+        setPlacements(placements as number);
+        setHours(hours as number);
+        setReturnVisits(returnVisits as number);
+        setVideos(videos as number);
+        router.push("/start/success");
       } else {
         toast.error("Please restart");
         router.push("/start");
