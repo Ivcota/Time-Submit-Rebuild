@@ -51,12 +51,12 @@ const LastStepPage: NextPage = () => {
       comments,
     }) => {
       if (firstName !== "") {
-        setBibleStudies(bibleStudies as number);
-        setPlacements(placements as number);
-        setHours(hours as number);
-        setReturnVisits(returnVisits as number);
-        setVideos(videos as number);
-        setComments(comments);
+        setBibleStudies(bibleStudies || 0);
+        setPlacements(placements || 0);
+        setHours(hours || 0);
+        setReturnVisits(returnVisits || 0);
+        setVideos(videos || 0);
+        setComments(comments || "");
 
         router.push("/start/success");
       } else {
