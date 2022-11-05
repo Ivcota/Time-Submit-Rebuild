@@ -29,6 +29,7 @@ const LastStepPage: NextPage = () => {
     videos: number | null;
     returnVisits: number | null;
     bibleStudies: number | null;
+    comments: string | null;
   }
 
   const formik = useFormik<IFormik>({
@@ -38,6 +39,7 @@ const LastStepPage: NextPage = () => {
       videos: null,
       returnVisits: null,
       bibleStudies: null,
+      comments: null,
     },
     onSubmit: ({ bibleStudies, hours, placements, returnVisits, videos }) => {
       if (firstName !== "") {
@@ -94,6 +96,13 @@ const LastStepPage: NextPage = () => {
                 required={true}
                 type="number"
                 placeholder="Bible Studies"
+                onChange={formik.handleChange}
+              />
+              <PrimaryInput
+                name="comments"
+                required={true}
+                type="text"
+                placeholder="Comments"
                 onChange={formik.handleChange}
               />
             </div>
