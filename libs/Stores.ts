@@ -82,6 +82,7 @@ interface ITSSFunctions extends TimeSubmitState {
   setBibleStudies: (studies: number) => void;
   setReturnVisits: (returnVisits: number) => void;
   resetTimeSubmitState: () => void;
+  setComments: (comment: string) => void;
 }
 
 export const useTimeFormStore = create<ITSSFunctions>((set) => {
@@ -134,6 +135,9 @@ export const useTimeFormStore = create<ITSSFunctions>((set) => {
     },
     setReturnVisits: (returnVisits) => {
       set({ returnVisits: returnVisits });
+    },
+    setComments: (comments) => {
+      set({ comments });
     },
     resetTimeSubmitState: () => {
       set({

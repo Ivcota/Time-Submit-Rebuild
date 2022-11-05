@@ -21,6 +21,7 @@ const LastStepPage: NextPage = () => {
     setVideos,
     setReturnVisits,
     setBibleStudies,
+    setComments,
   } = useTimeFormStore();
 
   interface IFormik {
@@ -29,6 +30,7 @@ const LastStepPage: NextPage = () => {
     videos: number | null;
     returnVisits: number | null;
     bibleStudies: number | null;
+    comments: string | null;
   }
 
   const formik = useFormik<IFormik>({
@@ -38,14 +40,24 @@ const LastStepPage: NextPage = () => {
       videos: null,
       returnVisits: null,
       bibleStudies: null,
+      comments: null,
     },
-    onSubmit: ({ bibleStudies, hours, placements, returnVisits, videos }) => {
+    onSubmit: ({
+      bibleStudies,
+      hours,
+      placements,
+      returnVisits,
+      videos,
+      comments,
+    }) => {
       if (firstName !== "") {
-        setBibleStudies(bibleStudies as number);
-        setPlacements(placements as number);
-        setHours(hours as number);
-        setReturnVisits(returnVisits as number);
-        setVideos(videos as number);
+        setBibleStudies(bibleStudies || 0);
+        setPlacements(placements || 0);
+        setHours(hours || 0);
+        setReturnVisits(returnVisits || 0);
+        setVideos(videos || 0);
+        setComments(comments || "");
+
         router.push("/start/success");
       } else {
         toast.error("Please restart");
@@ -94,6 +106,13 @@ const LastStepPage: NextPage = () => {
                 required={true}
                 type="number"
                 placeholder="Bible Studies"
+                onChange={formik.handleChange}
+              />
+              <PrimaryInput
+                name="comments"
+                required={true}
+                type="text"
+                placeholder="Comments"
                 onChange={formik.handleChange}
               />
             </div>

@@ -22,6 +22,7 @@ const SuccessPage = () => {
     videos,
     returnVisits,
     bibleStudies,
+    comments,
   } = useTimeFormStore();
 
   const router = useRouter();
@@ -45,6 +46,7 @@ const SuccessPage = () => {
           congregation,
           bibleStudies,
           returnVisits,
+          comments,
         }
       ),
       {
