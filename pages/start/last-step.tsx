@@ -21,6 +21,7 @@ const LastStepPage: NextPage = () => {
     setVideos,
     setReturnVisits,
     setBibleStudies,
+    setComments,
   } = useTimeFormStore();
 
   interface IFormik {
@@ -41,13 +42,22 @@ const LastStepPage: NextPage = () => {
       bibleStudies: null,
       comments: null,
     },
-    onSubmit: ({ bibleStudies, hours, placements, returnVisits, videos }) => {
+    onSubmit: ({
+      bibleStudies,
+      hours,
+      placements,
+      returnVisits,
+      videos,
+      comments,
+    }) => {
       if (firstName !== "") {
         setBibleStudies(bibleStudies as number);
         setPlacements(placements as number);
         setHours(hours as number);
         setReturnVisits(returnVisits as number);
         setVideos(videos as number);
+        setComments(comments);
+
         router.push("/start/success");
       } else {
         toast.error("Please restart");
